@@ -99,14 +99,12 @@
 		968606F51D6A9076000C0650 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				9686072B1D6AA9D3000C0650 /* New Group */,
+				9686072D1D6AB82C000C0650 /* CoreData */,
+				9686072C1D6AB814000C0650 /* Resources */,
+				9686072B1D6AA9D3000C0650 /* ViewControllers */,
 				968606F61D6A9076000C0650 /* AppDelegate.swift */,
-				968606F81D6A9076000C0650 /* ViewController.swift */,
-				968607291D6AA8E3000C0650 /* ViewController.xib */,
-				968607001D6A9076000C0650 /* Assets.xcassets */,
 				968607021D6A9076000C0650 /* LaunchScreen.storyboard */,
 				968607051D6A9076000C0650 /* Info.plist */,
-				968606FD1D6A9076000C0650 /* TodoList.xcdatamodeld */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -129,11 +127,29 @@
 			path = TodoListUITests;
 			sourceTree = "<group>";
 		};
-		9686072B1D6AA9D3000C0650 /* New Group */ = {
+		9686072B1D6AA9D3000C0650 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				968606F81D6A9076000C0650 /* ViewController.swift */,
+				968607291D6AA8E3000C0650 /* ViewController.xib */,
 			);
-			name = "New Group";
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9686072C1D6AB814000C0650 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				968607001D6A9076000C0650 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9686072D1D6AB82C000C0650 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				968606FD1D6A9076000C0650 /* TodoList.xcdatamodeld */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
