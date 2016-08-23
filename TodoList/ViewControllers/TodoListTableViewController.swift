@@ -22,6 +22,12 @@ class TodoListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(transitionToListDetail))
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView?.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,6 +36,11 @@ class TodoListTableViewController: UITableViewController {
 
     func transitionToListDetail() {
         print("transition")
+        
+        let listCellDetailViewController = ListCellDetailViewController(nibName: String(ListCellDetailViewController), bundle: nil)
+        
+        self.navigationController?.pushViewController(listCellDetailViewController, animated: true)
+        
     }
     
     // MARK: - Table view data source
@@ -41,14 +52,17 @@ class TodoListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return TodoListManager.sharedInstance.getTodoList().count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TableViewConstants.todoListCellIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel!.text = "To do list item"
+        if let title = TodoListManager.sharedInstance.getTodoListItemAtIndex(indexPath.row)?.getTitle() {
+            cell.textLabel!.text = title
+        }
+        
 
         return cell
     }

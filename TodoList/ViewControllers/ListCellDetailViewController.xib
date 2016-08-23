@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListCellDetailViewController" customModule="TodoList" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionTextView" destination="93d-AK-n4A" id="YJT-gF-9SD"/>
+                <outlet property="titleTextField" destination="4S7-eU-RNN" id="5QW-Zx-NmN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4S7-eU-RNN">
+                    <rect key="frame" x="5" y="0.0" width="600" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="czG-MT-jdz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="93d-AK-n4A" userLabel="Description">
+                    <rect key="frame" x="5" y="36" width="590" height="559"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="93d-AK-n4A" secondAttribute="bottom" constant="5" id="7GY-dj-0Qz"/>
+                <constraint firstAttribute="trailing" secondItem="4S7-eU-RNN" secondAttribute="trailing" constant="-5" id="S70-sX-gFI"/>
+                <constraint firstAttribute="trailing" secondItem="93d-AK-n4A" secondAttribute="trailing" constant="5" id="Tjh-J0-IvX"/>
+                <constraint firstItem="4S7-eU-RNN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="m8u-55-e9k"/>
+                <constraint firstItem="93d-AK-n4A" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="nb2-9B-2dF"/>
+                <constraint firstItem="4S7-eU-RNN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pr9-NF-GNR"/>
+                <constraint firstItem="93d-AK-n4A" firstAttribute="top" secondItem="4S7-eU-RNN" secondAttribute="bottom" constant="1" id="srw-Eq-qTH"/>
+            </constraints>
+            <point key="canvasLocation" x="151" y="269"/>
+        </view>
+    </objects>
+</document>

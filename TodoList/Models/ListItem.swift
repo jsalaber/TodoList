@@ -10,13 +10,15 @@ import Foundation
 
 class ListItem {
     
-    var title: String
-    var description: String
+    private var title: String
+    private var description: String
     
     init(title: String, description: String) {
         self.title = title
         self.description = description
     }
+    
+    // MARK: get functions
     
     func getTitle() -> String {
         return title
@@ -24,6 +26,16 @@ class ListItem {
     
     func getDescription() -> String {
         return description
+    }
+    
+    // MARK: mutator functions
+    
+    func setTitle(title: String) {
+        self.title = title
+    }
+    
+    func setDescription(description: String) {
+        self.description = description
     }
     
 }

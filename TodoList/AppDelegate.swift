@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.navigationController = UINavigationController(rootViewController: mainViewController)
         self.navigationController?.navigationBar.topItem?.title = TodoListTableViewController.title
-        
+        self.navigationController?.navigationBar.translucent = false
         
         self.window?.rootViewController = self.navigationController
         self.window?.makeKeyAndVisible()
