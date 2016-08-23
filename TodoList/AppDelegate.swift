@@ -14,15 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var mainViewController: ViewController?
+    var navigationController: UINavigationController?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let mainViewController = TodoListTableViewController(nibName: String(TodoListTableViewController), bundle: nil)
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        self.mainViewController = ViewController(nibName: "ViewController", bundle: nil)
-        self.window?.rootViewController = self.mainViewController
+        self.navigationController = UINavigationController(rootViewController: mainViewController)
+        self.navigationController?.navigationBar.topItem?.title = TodoListTableViewController.title
+        
+        
+        self.window?.rootViewController = self.navigationController
         self.window?.makeKeyAndVisible()
         
         return true
