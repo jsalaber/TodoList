@@ -13,12 +13,25 @@ class ListCellDetailViewController: UIViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
     
+    var index: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // replace default back button to trigger other methods when pressing back
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(backPressed))
+        
+        if self.index != nil {
+            
+            if let title = TodoListManager.sharedInstance.getTodoListItemAtIndex(self.index!)?.getTitle() {
+                self.titleTextField.text = title
+            }
+            
+            if let description = TodoListManager.sharedInstance.getTodoListItemAtIndex(self.index!)?.getDescription() {
+                self.descriptionTextView.text = description
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +41,16 @@ class ListCellDetailViewController: UIViewController {
     
     func backPressed() {
         
+        if self.index == nil {
+            saveNewListItem()
+        } else {
+            updateListItem()
+        }
+        
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func saveNewListItem() {
         let listItem = ListItem(title: "", description: "")
         var hasTitleOrDescriptionChanged = false
         
@@ -45,8 +68,11 @@ class ListCellDetailViewController: UIViewController {
         if hasTitleOrDescriptionChanged {
             TodoListManager.sharedInstance.addToList(listItem)
         }
-        
-        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func updateListItem() {
+        let updatedListItem = ListItem(title: titleTextField.text!, description: descriptionTextView.text!)
+        TodoListManager.sharedInstance.updateListItem(updatedListItem, index: self.index!)
     }
 
     /*

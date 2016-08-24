@@ -31,4 +31,10 @@ class TodoListManager {
         todoList.append(item)
     }
     
+    func updateListItem(updatedItem: ListItem, index: Int) {
+        if index < self.todoList.count {
+            self.todoList[index] = updatedItem
+        }
+    }
+    
 }

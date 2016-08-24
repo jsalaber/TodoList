@@ -34,11 +34,20 @@ class TodoListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    private func getListCellDetailViewController() -> ListCellDetailViewController {
+        return ListCellDetailViewController(nibName: String(ListCellDetailViewController), bundle: nil)
+    }
+    
     func transitionToListDetail() {
-        print("transition")
         
-        let listCellDetailViewController = ListCellDetailViewController(nibName: String(ListCellDetailViewController), bundle: nil)
+        let listCellDetailViewController = getListCellDetailViewController()
+        self.navigationController?.pushViewController(listCellDetailViewController, animated: true)
         
+    }
+    
+    func transitionToLIstDetailWithIndex(index: Int) {
+        let listCellDetailViewController = getListCellDetailViewController()
+        listCellDetailViewController.index = index
         self.navigationController?.pushViewController(listCellDetailViewController, animated: true)
         
     }
@@ -46,7 +55,6 @@ class TodoListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -63,7 +71,6 @@ class TodoListTableViewController: UITableViewController {
             cell.textLabel!.text = title
         }
         
-
         return cell
     }
     
@@ -80,6 +87,9 @@ class TodoListTableViewController: UITableViewController {
         }    
     }
  
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        transitionToLIstDetailWithIndex(indexPath.row)
+    }
 
     /*
     // Override to support rearranging the table view.
