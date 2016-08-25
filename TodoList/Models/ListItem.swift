@@ -7,35 +7,31 @@
 //
 
 import Foundation
+import CoreData
 
-class ListItem {
+class ListItem: NSManagedObject {
     
-    private var title: String
-    private var description: String
-    
-    init(title: String, description: String) {
-        self.title = title
-        self.description = description
-    }
+    @NSManaged private var noteTitle: String?
+    @NSManaged private var noteDescription: String?
     
     // MARK: get functions
     
-    func getTitle() -> String {
-        return title
+    func getTitle() -> String? {
+        return noteTitle!
     }
     
-    func getDescription() -> String {
-        return description
+    func getDescription() -> String? {
+        return noteDescription!
     }
     
     // MARK: mutator functions
     
-    func setTitle(title: String) {
-        self.title = title
+    func setTitleForNote(title: String) {
+        self.noteTitle = title
     }
     
     func setDescription(description: String) {
-        self.description = description
+        self.noteDescription = description
     }
     
 }

@@ -15,6 +15,10 @@ class TodoListManager {
     
     private init() {}
     
+    func initList() {
+        todoList = CoreDataManager.sharedInstance.runFetchRequest(String(ListItem)) as! Array<ListItem>
+    }
+    
     // MARK: get functions
     
     func getTodoList() -> Array<ListItem> {

@@ -47,32 +47,48 @@ class ListCellDetailViewController: UIViewController {
             updateListItem()
         }
         
+        CoreDataManager.sharedInstance.saveContext()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
     func saveNewListItem() {
-        let listItem = ListItem(title: "", description: "")
-        var hasTitleOrDescriptionChanged = false
         
+        var hasTitleOrDescriptionChanged = false
+        var title: String?
+        var description: String?
         
         if !titleTextField.text!.isEmpty {
-            listItem.setTitle(titleTextField.text!)
+            title = titleTextField.text!
             hasTitleOrDescriptionChanged = true
         }
         
         if !descriptionTextView.text!.isEmpty {
-            listItem.setDescription(descriptionTextView.text!)
+            description = descriptionTextView.text!
             hasTitleOrDescriptionChanged = true
         }
         
         if hasTitleOrDescriptionChanged {
-            TodoListManager.sharedInstance.addToList(listItem)
+            
+            if let listItemEntity = CoreDataManager.sharedInstance.createEntity(String(ListItem)) {
+                let listItem = CoreDataManager.sharedInstance.createManagedObject(listItemEntity) as! ListItem
+                
+                if title != nil {
+                    listItem.setTitleForNote(title!)
+                }
+                
+                if description != nil {
+                    listItem.setDescription(description!)
+                }
+                
+                TodoListManager.sharedInstance.addToList(listItem)
+            }
+            
         }
     }
     
     func updateListItem() {
-        let updatedListItem = ListItem(title: titleTextField.text!, description: descriptionTextView.text!)
-        TodoListManager.sharedInstance.updateListItem(updatedListItem, index: self.index!)
+//        let updatedListItem = ListItem(title: titleTextField.text!, description: descriptionTextView.text!)
+//        TodoListManager.sharedInstance.updateListItem(updatedListItem, index: self.index!)
     }
 
     /*
