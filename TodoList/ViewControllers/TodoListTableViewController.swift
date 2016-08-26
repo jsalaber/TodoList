@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListTableViewController: UITableViewController {
     
@@ -52,6 +53,13 @@ class TodoListTableViewController: UITableViewController {
         
     }
     
+    func deleteListItem(index: Int) {
+        if let itemTodelete = TodoListManager.sharedInstance.getTodoListItemAtIndex(index)! as NSManagedObject? {
+            CoreDataManager.sharedInstance.deleteManagedObject(itemTodelete)
+            TodoListManager.sharedInstance.deleteListItem(index)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -79,9 +87,11 @@ class TodoListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
             
+            deleteListItem(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView?.reloadData()
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

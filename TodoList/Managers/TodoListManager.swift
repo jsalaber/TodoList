@@ -41,4 +41,10 @@ class TodoListManager {
         }
     }
     
+    func deleteListItem(index: Int) {
+        if index < self.todoList.count {
+            self.todoList.removeAtIndex(index)
+        }
+    }
+    
 }

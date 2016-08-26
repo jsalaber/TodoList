@@ -60,4 +60,9 @@ class CoreDataManager {
         
     }
     
+    func deleteManagedObject(object: NSManagedObject) {
+        getManagedObjectContext().deleteObject(object)
+        saveContext()
+    }
+    
 }
