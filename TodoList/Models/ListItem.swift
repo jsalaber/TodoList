@@ -17,11 +17,19 @@ class ListItem: NSManagedObject {
     // MARK: get functions
     
     func getTitle() -> String? {
-        return noteTitle!
+        if noteTitle != nil {
+            return self.noteTitle!
+        }
+        setTitleForNote("")
+        return self.noteTitle!
     }
     
     func getDescription() -> String? {
-        return noteDescription!
+        if noteDescription != nil {
+            return self.noteDescription!
+        }
+        setDescription("")
+        return self.noteDescription!
     }
     
     // MARK: mutator functions

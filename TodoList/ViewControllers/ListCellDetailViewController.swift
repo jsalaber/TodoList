@@ -87,8 +87,9 @@ class ListCellDetailViewController: UIViewController {
     }
     
     func updateListItem() {
-//        let updatedListItem = ListItem(title: titleTextField.text!, description: descriptionTextView.text!)
-//        TodoListManager.sharedInstance.updateListItem(updatedListItem, index: self.index!)
+        let listItem = TodoListManager.sharedInstance.getTodoListItemAtIndex(self.index!)
+        listItem?.setTitleForNote(titleTextField.text!)
+        listItem?.setDescription(descriptionTextView.text!)
     }
 
     /*
